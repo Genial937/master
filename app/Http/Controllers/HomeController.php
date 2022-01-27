@@ -8,6 +8,11 @@ use SimpleXMLElement;
 
 class HomeController extends Controller
 {
+    /**
+     * Method index
+     *
+     * @return void
+     */
     public function index()
     {
         $url = 'https://www.opensecrets.org/api/?method=candSummary&cid=N00007360&cycle=2022&apikey=35cd2e15b7014316417b76fb72b9fb1d';
@@ -26,6 +31,13 @@ class HomeController extends Controller
         return view('welcome', compact('cand'));
     }
 
+    /**
+     * Method get_request_curl
+     *
+     * @param $url $url [explicite description]
+     *
+     * @return void
+     */
     private function get_request_curl($url)
     {
         $curl = curl_init();
@@ -44,6 +56,13 @@ class HomeController extends Controller
         return $curl_response;
     }
 
+    /**
+     * Method parse_xml
+     *
+     * @param $data $data [explicite description]
+     *
+     * @return void
+     */
     private function parse_xml($data)
     {
         $str = <<<XML
